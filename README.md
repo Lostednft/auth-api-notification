@@ -1,15 +1,19 @@
 ```mermaid
 classDiagram
     class User {
-        String name
+	String name
+        String login
+	String password
         int age
-        Notification[] notification
         UserRole userRole
     }
 
     class Notification {
         String message
-        Status status
+	LocalDateTime date
+	User userSender
+	User userDestination
+        Status messageStatus
         Channel channel
     }
 
@@ -25,8 +29,8 @@ classDiagram
         String role
     }
 
-    User"1" *-- "N"Notification 
     User"1" *-- "1"UserRole
     Notification"1" *-- "1"Status
     Notification"1" *-- "1"Channel
+    Notification "1" *-- "N" User
 ```
